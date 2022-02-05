@@ -155,40 +155,46 @@ nav a {
 /*Lab 2 work*/
 
 h1 {
-  background-color: #41a6d4;
+  background-color: #008b8b;
   padding: 10px;
 }
 
 .navbar {
-  background-color: #82c5e4;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  background-color: #add8e6;
+  padding: 10px;
 }
 
-.navbar, .selector {
-  text-align: center;
+.selector {
+  padding-left: 300px;
 }
 
-.navbar, .mainpage {
-  text-align: right;
+.mainpage {
+  padding-left: 600px;
 }
 
-.basics, .webdetail {
+.basics {
   padding-left: 10px;
+  padding-bottom: 20px;
+}
+
+.webdetail {
+  padding-left: 10px;
+  position: absolute;
+  top: 198px;
+  left: 0px;
 }
 
 .firstbox{
-  background-color: #b9b9b9;
+  background-color: #dcdcdc;
   border: thin dashed #000;
   margin-left: 10px;
   margin-right: 20px;
-  margin-top: auto;
   padding-left: 10px;
   border-radius: 5px;
 }
 
 .secondbox {
-  background-color: #24b4ce;
+  background-color: #87ceeb;
   border: thin dashed #000;
   margin-left: 25px;
   margin-right: 35px;
@@ -203,20 +209,14 @@ h1 {
 }
 
 .imageposition {
-  display: grid;
+  display: block;
   position: relative;
-
+  margin-top: 20px;
 }
 
-.imageright {
-  top: 0;
-  right: 250;
-  position: absolute;
-}
 .imagedetail {
-  background-color: #c57a49;
-  margin-left: 100px;
-  margin-right: 1000px;
+  background-color: #f4a460;
+  margin-left: 230px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 1px;
@@ -228,32 +228,38 @@ h1 {
 .images {
   display: grid;
   position: relative;
+  margin-right: 230px;
 }
 
 .jpgimage {
-  top: 0;
-  right: 0;
+  top: 0px;
+  right: 0px;
   position: absolute;
 }
 
 .pngimage {
-  top: 0;
-  right: 150;
+  top: 0px;
+  right: 150px;
   position: absolute;
 }
 
 .svgimage {
-  top: 150;
-  right: 5;
+  top: 150px;
+  right: 0px;
   position: absolute;
-  max-width: 100%;
-  height: auto;
 }
 
 .gifimage {
-  top: 150;
-  right: 150;
+  top: 150px;
+  right: 150px;
   position: absolute;
+}
+
+.githubs {
+  background-color: #20b2aa;
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-top: 320px;
 }
 
 
