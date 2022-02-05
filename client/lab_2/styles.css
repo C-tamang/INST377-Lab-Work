@@ -151,3 +151,109 @@ nav a {
 .grid img {
   width: 100px;
 }
+
+/*Lab 2 work*/
+
+h1 {
+  background-color: #41a6d4;
+  padding: 10px;
+}
+
+.navbar {
+  background-color: #82c5e4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar, .selector {
+  text-align: center;
+}
+
+.navbar, .mainpage {
+  text-align: right;
+}
+
+.basics, .webdetail {
+  padding-left: 10px;
+}
+
+.firstbox{
+  background-color: #b9b9b9;
+  border: thin dashed #000;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-top: auto;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.secondbox {
+  background-color: #24b4ce;
+  border: thin dashed #000;
+  margin-left: 25px;
+  margin-right: 35px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+.elements {
+  padding-left: 10px;
+}
+
+.imageposition {
+  display: grid;
+  position: relative;
+
+}
+
+.imageright {
+  top: 0;
+  right: 250;
+  position: absolute;
+}
+.imagedetail {
+  background-color: #c57a49;
+  margin-left: 100px;
+  margin-right: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-radius: 5px;
+  position: absolute;
+}
+
+.images {
+  display: grid;
+  position: relative;
+}
+
+.jpgimage {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+
+.pngimage {
+  top: 0;
+  right: 150;
+  position: absolute;
+}
+
+.svgimage {
+  top: 150;
+  right: 5;
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+}
+
+.gifimage {
+  top: 150;
+  right: 150;
+  position: absolute;
+}
+
+
