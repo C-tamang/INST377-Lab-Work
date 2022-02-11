@@ -1,1 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+.page {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.titles {
+    background-color: rgb(74, 139, 117);
+}
+  
+.menu {
+    background-color: #5995DA;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #fff;
+    width: 900px;
+}
+
+.datapage {
+    display: flex;
+    justify-content: flex-end;
+    border: 1px solid #fff;
+  }
+  
+.mainpage {
+    margin-left: 20px;
+}
+
+.header {
+    display: flex;
+    color: #5995DA;
+    background-color: #D6E9FE;
+    justify-content: center;
+  }
+  
+.headerdetail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    height: 350px;
+}
+
+.githubs, .projects {
+    align-self: flex-end;
+    padding-bottom: 5px;
+}
+
+.photos {
+    display: flex;
+    justify-content: center;
+}
+
+.photo-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 1000px;
+}
+
+.footers {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.footer-item-1, .footer-item-2, .footer-item-3 {
+    background-color: #D6E9FE;
+    border: 1px solid #fff;
+    height: 200px;
+    flex: 1;
+}
+
+.footer-item-1, .footer-item-3 {
+    background-color: #5995DA;
+    flex: initial;
+    width: 200px;
+}
+
+/* Making responsive page */
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+    body {
+      background-color: #F09A9D; /* Red */
+    }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+    .page {
+      width: 960px;
+      margin: 0 auto;
+    }
+    .feature-1,
+    .feature-2,
+    .feature-3 {
+      width: 33.3%;
+    }
+    .header {
+      height: 400px;
+    }
+  }
