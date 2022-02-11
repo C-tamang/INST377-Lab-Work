@@ -4,31 +4,24 @@
     box-sizing: border-box;
 }
 
-.page {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .titles {
     background-color: rgb(74, 139, 117);
+    padding: 5px;
 }
   
 .menu {
-    background-color: #5995DA;
-    color: #fff;
-    padding: 20px 0;
-}
-
-.menu {
     display: flex;
     justify-content: center;
+    background-color: #5995DA;
+    color: #fff;
+    padding: 20px;
 }
 
 .menubar {
     display: flex;
     justify-content: space-between;
     border: 1px solid #fff;
-    width: 900px;
+    width: 750px;
 }
 
 .datapage {
@@ -51,14 +44,16 @@
 .headerdetail {
     display: flex;
     justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 1000px;
-    height: 350px;
+    height: 300px;
+    /*width: 1000px;
+    height: 350px;8*/
 }
 
 .githubs, .projects {
     align-self: flex-end;
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 }
 
 .photos {
@@ -91,27 +86,16 @@
     width: 200px;
 }
 
-/* Making responsive page */
-
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
     body {
-      background-color: #F09A9D; /* Red */
+        background-color: #fdfdfd; /* Blue */
     }
 }
 
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
-    .page {
-      width: 960px;
-      margin: 0 auto;
+    body {
+        background-color: #fdfdfd; /* Blue */
     }
-    .feature-1,
-    .feature-2,
-    .feature-3 {
-      width: 33.3%;
-    }
-    .header {
-      height: 400px;
-    }
-  }
+}
