@@ -47,8 +47,6 @@
     justify-content: center;
     align-items: center;
     height: 300px;
-    /*width: 1000px;
-    height: 350px;8*/
 }
 
 .githubs, .projects {
@@ -58,6 +56,7 @@
 
 .photos {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -90,6 +89,26 @@
 @media only screen and (max-width: 400px) {
     body {
         background-color: #fdfdfd; /* Blue */
+    }
+    
+    .titles, .menu, .header, .photo-grid, .footers {
+        width: 100%;
+    }
+    
+    .one, .two, .three, .four, .five {
+        width: 50%;
+    }
+
+    .two, .five {
+        order: 1;
+    }
+
+    .four {
+        order: 2;
+    }
+
+    .three, .one {
+        order: 3;
     }
 }
 
