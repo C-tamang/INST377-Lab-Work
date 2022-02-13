@@ -11,6 +11,7 @@
   
 .menu {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: #5995DA;
     color: #fff;
@@ -19,6 +20,7 @@
 
 .menubar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid #fff;
     width: 750px;
@@ -28,7 +30,11 @@
     display: flex;
     justify-content: flex-end;
     border: 1px solid #fff;
-  }
+}
+
+.database {
+    padding-left: 15px;
+}
   
 .mainpage {
     margin-left: 20px;
@@ -36,9 +42,10 @@
 
 .header {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     color: #5995DA;
     background-color: #D6E9FE;
-    justify-content: center;
   }
   
 .headerdetail {
@@ -51,7 +58,7 @@
 
 .githubs, .projects {
     align-self: flex-end;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
 }
 
 .photos {
@@ -60,10 +67,10 @@
     justify-content: center;
 }
 
-.photo-grid {
+.photodetail {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     width: 1000px;
 }
 
@@ -73,32 +80,20 @@
 }
   
 .footer-item-1, .footer-item-2, .footer-item-3 {
+    flex: 1;
+    height: 200px;
     background-color: #D6E9FE;
     border: 1px solid #fff;
-    height: 200px;
-    flex: 1;
 }
 
 .footer-item-1, .footer-item-3 {
-    background-color: #5995DA;
     flex: initial;
+    background-color: #5995DA;
     width: 200px;
 }
 
-/* Mobile Styles */
-@media only screen and (max-width: 400px) {
-    body {
-        background-color: #fdfdfd; /* Blue */
-    }
-    
-    .titles, .menu, .header, .photo-grid, .footers {
-        width: 100%;
-    }
-    
-    .one, .two, .three, .four, .five {
-        width: 50%;
-    }
 
+@media only screen and (max-width: 960px) {
     .two, .five {
         order: 1;
     }
@@ -110,11 +105,14 @@
     .three, .one {
         order: 3;
     }
+
+    .footer-item-1, .footer-item-3 {
+        width: 300px;
+    }
 }
 
-/* Desktop Styles */
 @media only screen and (min-width: 961px) {
     body {
-        background-color: #fdfdfd; /* Blue */
+        background-color: #fdfdfd;
     }
 }
