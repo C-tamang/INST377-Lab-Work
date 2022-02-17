@@ -1,5 +1,3 @@
-const { ROWLOCK } = require("sequelize/types/lib/table-hints")
-
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid')
   let squares = Array.from(document.querySelectorAll('.grid div'))
@@ -78,9 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  // make the Tetromino move down every second
-  //timerID = setInterval(moveDown, 1000)
-
   // assign function to KeyCodes
   function control(e) {
     if (e.keyCode === 37) {
@@ -94,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   document.addEventListener('keyup', control)
-
 
   // move down function
   function moveDown() {
@@ -166,10 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //the Tetrominos without rotation
   const upNextTetrominoes = [
-    [1, displayWidth+1, displayWidth*2+1, 2] //lTetromino
-    [0, displayWidth, displayWidth+1, displayWidth*2+1] //ztetromino
-    [1, displayWidth, displayWidth+1, displayWidth+2] //tTetromino
-    [0, 1, displayWidth, displayWidth+1] //iTetromino
+    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], //ztetromino
+    [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
+    [0, 1, displayWidth, displayWidth+1], //iTetromino
     [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
   ]
 
