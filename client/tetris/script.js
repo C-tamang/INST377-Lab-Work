@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  //undraw the Tetromino
+  // undraw the Tetromino
   function undraw() {
-    current.forEach(index => {
+    current.forEach((index) => {
       squares[currentPosition + index].classList.remove('tetromino')
       squares[currentPosition + index].style.backgroundColor = ''
     })
@@ -79,12 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // assign function to KeyCodes
   function control(e) {
     if (e.keyCode === 37) {
+      // eslint-disable-next-line no-use-before-define
       moveLeft()
     } else if (e.keyCode === 38) {
+      // eslint-disable-next-line no-use-before-define
       rotate()
     } else if (e.keyCode === 39) {
+      // eslint-disable-next-line no-use-before-define
       moveRight()
     } else if (e.keyCode === 40) {
+      // eslint-disable-next-line no-use-before-define
       moveDown()
     }
   }
@@ -197,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function addScore() {
     for (let i = 0; i < 199; i += width) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
-
       if (row.every(index => squares[index].classList.contains('taken'))) {
         score += 10
         scoreDisplay.innerHTML = score
@@ -220,9 +223,5 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(timerID)
     }
   }
-
-
-
-
 
 })
