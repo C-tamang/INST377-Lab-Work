@@ -128,14 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // move the Tetromnino left, unless is at the edge or there is a blockage
   function moveLeft() {
     undraw()
+    // eslint-disable-next-line arrow-parens
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
-
     if (!isAtLeftEdge) currentPosition -= 1
-
+    // eslint-disable-next-line arrow-parens
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition += 1
     }
-
     draw()
   }
 
