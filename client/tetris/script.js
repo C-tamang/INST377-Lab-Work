@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable no-shadow */
 document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('.grid')
   let squares = Array.from(document.querySelectorAll('.grid div'))
@@ -141,21 +143,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // move the tetromino right, unless is at the edge or there is a blockage
   function moveRight() {
     undraw()
+    // eslint-disable-next-line arrow-parens
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
-
     if (!isAtRightEdge) currentPosition += 1
-
+    // eslint-disable-next-line arrow-parens
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       currentPosition -= 1
     }
-
     draw()
   }
 
   // rotate the tetromino
   function rotate() {
     undraw()
-    currentPosition ++ 
+    // eslint-disable-next-line no-plusplus
+    currentPosition++; 
     if (currentRotation === current.length) {
       currentRotation = 0
     }
@@ -163,18 +165,18 @@ document.addEventListener('DOMContentLoaded', () => {
     draw()
   }
 
-  //show up-next tetromino in mini-grid display
+  // show up-next tetromino in mini-grid display
   const displaySquares = document.querySelectorAll('.mini-grid div')
   const displayWidth = 4
   const displayIndex = 0
 
-  //the Tetrominos without rotation
+  // the Tetrominos without rotation
   const upNextTetrominoes = [
-    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
-    [0, displayWidth, displayWidth+1, displayWidth*2+1], //ztetromino
-    [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
-    [0, 1, displayWidth, displayWidth+1], //iTetromino
-    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] //iTetromino
+    [1, displayWidth+1, displayWidth*2+1, 2], // lTetromino
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], // ztetromino
+    [1, displayWidth, displayWidth+1, displayWidth+2], // tTetromino
+    [0, 1, displayWidth, displayWidth+1], // iTetromino
+    [1, displayWidth+1, displayWidth*2+1, displayWidth*3+1] // iTetromino
   ]
 
   // Display the shape in the mini-grid display
@@ -182,15 +184,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // remove any trace of a tetromino from the entire grid
     displaySquares.forEach(squares => {
       squares.classList.remove('tetromino')
+      // eslint-disable-next-line no-param-reassign
       squares.style.backgroundColor = ''
     })
+    // eslint-disable-next-line arrow-parens
     upNextTetrominoes[nextRandom].forEach(index => {
       displaySquares[displayIndex + index].classList.add('tetromino')
       displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     })
   }
 
-  //add functionality to the button
+  // add functionality to the button
   starBtn.addEventListener('click', () => {
     if (timerID) {
       clearInterval(timerID)
@@ -207,6 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function addScore() {
     for (let i = 0; i < 199; i += width) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
+      // eslint-disable-next-line no-loop-func
+      // eslint-disable-next-line arrow-parens
       if (row.every(index => squares[index].classList.contains('taken'))) {
         score += 10
         scoreDisplay.innerHTML = score
