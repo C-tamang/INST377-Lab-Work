@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable arrow-parens */
 /* eslint-disable no-shadow */
 document.addEventListener('DOMContentLoaded', () => {
@@ -207,12 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  //add score
+  // add score
   function addScore() {
     for (let i = 0; i < 199; i += width) {
       const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
-      // eslint-disable-next-line no-loop-func
-      // eslint-disable-next-line arrow-parens
       if (row.every(index => squares[index].classList.contains('taken'))) {
         score += 10
         scoreDisplay.innerHTML = score
@@ -230,10 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // game over
   function gameOver() {
-    if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+    if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
       scoreDisplay.innerHTML = 'end'
       clearInterval(timerID)
     }
+  // eslint-disable-next-line padded-blocks
   }
 
 })
