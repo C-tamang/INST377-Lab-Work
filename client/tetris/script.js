@@ -70,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // undraw the Tetromino
   function undraw() {
-    current.forEach((index) => {
+    // eslint-disable-next-line arrow-parens
+    current.forEach(index => {
       squares[currentPosition + index].classList.remove('tetromino')
       squares[currentPosition + index].style.backgroundColor = ''
     })
@@ -99,21 +100,27 @@ document.addEventListener('DOMContentLoaded', () => {
     undraw()
     currentPosition += width
     draw()
+    // eslint-disable-next-line no-use-before-define
     freeze()
   }
 
   // freeze function
   function freeze() {
+    // eslint-disable-next-line arrow-parens
     if (current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
+      // eslint-disable-next-line arrow-parens
       current.forEach(index => squares[currentPosition + index].classList.add('taken'))
-      //start a new tetromino falling
+      // start a new tetromino falling
       random = nextRandom
       nextRandom = Math.floor(Math.random() * theTetrominoes.length)
       current = theTetrominoes[random][currentPosition]
       currentPosition = 4
       draw()
+      // eslint-disable-next-line no-use-before-define
       displayShape()
+      // eslint-disable-next-line no-use-before-define
       addScore()
+      // eslint-disable-next-line no-use-before-define
       gameOver()
     }
   }
