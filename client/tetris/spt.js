@@ -79,12 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // assign function to KeyCodes
   function control(e) {
     if (e.keyCode === 37) {
+      // eslint-disable-next-line no-use-before-define
       moveLeft();
     } else if (e.keyCode === 38) {
+      // eslint-disable-next-line no-use-before-define
       rotate();
     } else if (e.keyCode === 39) {
+      // eslint-disable-next-line no-use-before-define
       moveRight();
     } else if (e.keyCode === 40) {
+      // eslint-disable-next-line no-use-before-define
       moveDown();
     }
   }
@@ -95,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     undraw();
     currentPosition += width;
     draw();
+    // eslint-disable-next-line no-use-before-define
     freeze();
   }
 
@@ -108,8 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
       current = theTetrominoes[random][currentRotation];
       currentPosition = 4;
       draw();
+      // eslint-disable-next-line no-use-before-define
       displayShape();
+      // eslint-disable-next-line no-use-before-define
       addScore();
+      // eslint-disable-next-line no-use-before-define
       gameOver();
     }
   }
@@ -139,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // rotate the tetromino
   function rotate() {
     undraw();
+    // eslint-disable-next-line no-plusplus
     currentPosition++;
     if (currentRotation === current.length) {
       currentRotation = 0;
@@ -164,8 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Display the shape in the mini-grid display
   function displayShape() {
   // remove any trace of a tetromino from the entire grid
+    // eslint-disable-next-line no-shadow
     displaySquares.forEach((squares) => {
       squares.classList.remove('tetromino');
+      // eslint-disable-next-line no-param-reassign
       squares.style.backgroundColor = '';
     });
     upNextTetrominoes[nextRandom].forEach((index) => {
@@ -191,9 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function addScore() {
     for (let i = 0; i < 199; i += width) {
       const row = [i, i + 1, i + 2, i + 3, i + 4, i + 5, i + 6, i + 7, i + 8, i + 9];
+      // eslint-disable-next-line no-loop-func
       if (row.every((index) => squares[index].classList.contains('taken'))) {
         score += 10;
         scoreDisplay.innerHTML = score;
+        // eslint-disable-next-line no-loop-func
         row.forEach((index) => {
           squares[index].classList.remove('taken');
           squares[index].classList.remove('tetromino');
