@@ -11,17 +11,37 @@ function dataHandler(dataArray) {
   console.log('fired dataHandler')
   console.table(dataArray)
   const range = [...Array(15).keys()]
-
-  range.forEach((item) => {
-    console.log('range item', item)
+  const listItems = range.map((item, index) => {
+    const restNum = getRandomIntInclusive(0, dataArray.length - 1)
+    return dataArray[restNum]
   })
+  console.log(listItems)
+  return listItems
 }
 
-
-
-
+// Main function
 async function mainEvent() { // the async keyword means we can make API requests
+  console.log('script loaded')
   const form = document.querySelector('.main_form');
+  const submit = document.querySelector('.submit_button')
+  submit.style.display = 'none'
+
+  const results = await fetch('/api/foodServicesPG')
+  const arrayFromJson = await results.json()
+  console.log(arrayFromJson)
+
+  if(arrayFromJson.data.length > 0) {
+    submit.style.display = 'block'
+    form.addEventListener('submit', async (submitEvent) => {
+      submitEvent.preventDefault()
+      console.log('form submission')
+      const restoArray = dataHandler(arrayFromJson.data)
+    })
+
+  }
+
+  
+  /*
   form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
     submitEvent.preventDefault(); // This prevents your page from refreshing!
     console.log('form submission'); // this is substituting for a "breakpoint"
@@ -31,6 +51,9 @@ async function mainEvent() { // the async keyword means we can make API requests
     // arrayFromJson.data - we're accessing a key called 'data' on the returned object
     // it contains all 1,000 records we need
   });
+  */
+
+
 }
 
 // this actually runs first! It's calling the function above
