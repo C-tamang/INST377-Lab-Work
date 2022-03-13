@@ -1,3 +1,25 @@
+function getRandomIntInclusive(min, max) {
+  const newMin = Math.ceil(min)
+  const newMax = Math.floor(max)
+  return Math.floor(
+    Math.random() * (newMax - newMin + 1) + newMin
+  )
+}
+
+// Data Handler
+function dataHandler(dataArray) {
+  console.log('fired dataHandler')
+  console.table(dataArray)
+  const range = [...Array(15).keys()]
+
+  range.forEach((item) => {
+    console.log('range item', item)
+  })
+}
+
+
+
+
 async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form');
   form.addEventListener('submit', async (submitEvent) => { // async has to be declared all the way to get an await
