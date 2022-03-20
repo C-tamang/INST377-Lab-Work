@@ -51,23 +51,31 @@ async function mainEvent() { // the async keyword means we can make API requests
   if (arrayFromJson.length > 0) {
     submit.style.display = 'block';
 
-    const currentArray = [];
+    let currentArray = [];
     resto.addEventListener('input', async (event) => {
-      if (currentArray === undefined) { return; }
+      // if (currentArray === undefined) { return; }
       console.log(event.target.value);
-      const matchResto = currentArray.filter((item) => {
-        console.log(item)
-        console.log(item.name)
-        item.name.includes(event.target.value)
+
+      // if (currentArray.length < 1) {
+      // return;
+      // }
+
+      const selectResto = arrayFromJson.filter((item) => {
+        const lowerName = item.name.toLowerCase();
+        const lowerValue = event.target.value.toLowerCase();
+        return lowerName.includes(lowerValue);
       });
-      // connsole.log(matchResto);
-    })
+
+      console.log(selectResto);
+      createHtmlList(selectResto);
+    });
 
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       // console.log('form submission');
-      const restoArray = dataHandler(arrayFromJson);
-      createHtmlList(restoArray);
+      currentArray = dataHandler(arrayFromJson);
+      console.log(currentArray);
+      createHtmlList(currentArray);
     });
   }
 }
