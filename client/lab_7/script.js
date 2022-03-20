@@ -70,6 +70,19 @@ async function mainEvent() { // the async keyword means we can make API requests
       createHtmlList(selectResto);
     });
 
+    zipcode.addEventListener('input', async (events) => {
+      console.log(events.target.value);
+
+      if (currentArray.length < 1) {
+        return;
+      }
+
+      const selectZip = currentArray.filter((item) => item.zip.includes(events.target.value));
+
+      console.log(selectZip);
+      createHtmlList(selectZip);
+    });
+
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       // console.log('form submission');
