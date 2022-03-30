@@ -2,7 +2,6 @@ body {
     display: flex;
 }
 
-
 .game-container {
     width: 500px;
     height: 730px;
@@ -60,14 +59,14 @@ body {
 }
 
 .obstacle {
-    background-image: url('/client/flappy/flappybird-pipe.png');
+    background-color: green;
     width: 60px;
     height: 300px;
     position: absolute;
 }
 
 .topObstacle {
-    background-image: url('/client/flappy/flappybird-pipe.png');
+    background-color: green;
     transform: rotate(180deg);
     width: 60px;
     height: 300px;
