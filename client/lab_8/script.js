@@ -34,8 +34,8 @@ function createHtmlList(collection) {
 }
 
 function initMap(targetId) {
-  const latLong = [38.7849, 76.8721]
-  const map = L.map(targetId).setView(latLong, 9);
+  const latLong = [38.784, -76.872]
+  const map = L.map(targetId).setView(latLong, 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -45,6 +45,14 @@ function initMap(targetId) {
     accessToken: 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
   }).addTo(map);
   return map;
+}
+
+function addMapMarkers(map, collection) {
+  collection.forEach((item) => {
+    const point = item.geocoded_column_1?.coordinates;
+    console.log(item.geocoded_column_1?.coordinates);
+    L.marker([point[1], point[0]]).addTo(map);
+  });
 }
 
 // Main function
@@ -59,21 +67,22 @@ async function mainEvent() { // the async keyword means we can make API requests
   const retrievalVar = 'res=taurants';
   submit.style.display = 'none';
 
+  // TODO: figure out how to clear variable
   if (localStorage.getItem(retrievalVar) === undefined) {
     // const results = await fetch('/api/foodServicesPG');
     const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
     const arrayFromJson = await results.json();
     console.log(arrayFromJson);
-    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson));
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
   }
 
-  const storedData = localStorage.getItem(retrievalVar);
-  // const storedDataArray = JSON.parse(storedData);
-  console.log(storedData);
+  const storedDataString = localStorage.getItem(retrievalVar);
+  const storedDataArray = JSON.parse(storedDataString);
+  console.log(storedDataArray);
 
   // const arrayFromJson = {data: []};
 
-  if (storedData.length > 0) {
+  if (storedDataArray.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
@@ -84,7 +93,7 @@ async function mainEvent() { // the async keyword means we can make API requests
         return;
       }
 
-      const selectResto = currentArray.filter((item) => {
+      const selectResto = storedDataArray.filter((item) => {
         const lowerName = item.name.toLowerCase();
         const lowerValue = event.target.value.toLowerCase();
         return lowerName.includes(lowerValue);
@@ -110,9 +119,10 @@ async function mainEvent() { // the async keyword means we can make API requests
     form.addEventListener('submit', async (submitEvent) => {
       submitEvent.preventDefault();
       // console.log('form submission');
-      currentArray = dataHandler(arrayFromJson);
+      currentArray = dataHandler(storedDataArray);
       console.log(currentArray);
       createHtmlList(currentArray);
+      addMapMarkers(map, currentArray);
     });
   }
 }
