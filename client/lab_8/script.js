@@ -34,7 +34,8 @@ function createHtmlList(collection) {
 }
 
 function initMap(targetId) {
-  const map = L.map(targetId).setView([51.505, -0.09], 13);
+  const latLong = [38.7849, 76.8721]
+  const map = L.map(targetId).setView(latLong, 9);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
@@ -55,16 +56,24 @@ async function mainEvent() { // the async keyword means we can make API requests
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
   const map = initMap('map');
+  const retrievalVar = 'res=taurants';
   submit.style.display = 'none';
 
-  // const results = await fetch('/api/foodServicesPG');
-  // const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-  // const arrayFromJson = await results.json();
-  // console.log(arrayFromJson);
+  if (localStorage.getItem(retrievalVar) === undefined) {
+    // const results = await fetch('/api/foodServicesPG');
+    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const arrayFromJson = await results.json();
+    console.log(arrayFromJson);
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson));
+  }
 
-  const arrayFromJson = {data: []};
+  const storedData = localStorage.getItem(retrievalVar);
+  // const storedDataArray = JSON.parse(storedData);
+  console.log(storedData);
 
-  if (arrayFromJson.length > 0) {
+  // const arrayFromJson = {data: []};
+
+  if (storedData.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
