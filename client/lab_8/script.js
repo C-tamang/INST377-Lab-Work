@@ -63,6 +63,7 @@ function addMapMarkers(map, collection) {
   });
 }
 
+// keep only lab 8 requirements
 function refreshList(target, storage) {
   target.addEventListener('click', async (event) => {
     event.preventDefault();
@@ -70,7 +71,7 @@ function refreshList(target, storage) {
     const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
     const arrayFromJson = await results.json();
     console.log('List reload complete');
-    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+    localStorage.setItem(storage, JSON.stringify(arrayFromJson.data));
     location.reload();
   });
 }
