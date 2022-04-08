@@ -34,7 +34,7 @@ function createHtmlList(collection) {
 }
 
 function initMap(targetId) {
-  const latLong = [38.784, -76.872]
+  const latLong = [38.784, -76.872];
   const map = L.map(targetId).setView(latLong, 13);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -48,6 +48,14 @@ function initMap(targetId) {
 }
 
 function addMapMarkers(map, collection) {
+  // remove marker
+  map.eachLayer((layer) => {
+    if (layer instanceof L.marker) {
+      layer.remove();
+    }
+  });
+
+  // add marker
   collection.forEach((item) => {
     const point = item.geocoded_column_1?.coordinates;
     console.log(item.geocoded_column_1?.coordinates);
@@ -68,7 +76,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   submit.style.display = 'none';
 
   // TODO: figure out how to clear variable
-  if (localStorage.getItem(retrievalVar) === undefined) {
+  if (!localStorage.getItem(retrievalVar)) {
     // const results = await fetch('/api/foodServicesPG');
     const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
     const arrayFromJson = await results.json();
@@ -77,6 +85,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   }
 
   const storedDataString = localStorage.getItem(retrievalVar);
+  console.log(storedDataString)
   const storedDataArray = JSON.parse(storedDataString);
   console.log(storedDataArray);
 
