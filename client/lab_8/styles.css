@@ -24,6 +24,7 @@ body {
     column-gap: 50px;
     justify-content: center;
     margin-right: 50px;
+    align-items: flex-start;
 }
   
 .columns form {

@@ -63,6 +63,18 @@ function addMapMarkers(map, collection) {
   });
 }
 
+function refreshList(target, storage) {
+  target.addEventListener('click', async (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const arrayFromJson = await results.json();
+    console.log('List reload complete');
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+    location.reload();
+  });
+}
+
 // Main function
 async function mainEvent() { // the async keyword means we can make API requests
   console.log('script loaded');
@@ -71,30 +83,25 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
+  const refresh = document.querySelector('#refresh_list');
+
   const map = initMap('map');
-  const retrievalVar = 'res=taurants';
+  const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  // TODO: figure out how to clear variable
-  if (!localStorage.getItem(retrievalVar)) {
-    // const results = await fetch('/api/foodServicesPG');
-    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-    const arrayFromJson = await results.json();
-    console.log(arrayFromJson);
-    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
-  }
+  refreshList(refresh, retrievalVar);
 
   const storedDataString = localStorage.getItem(retrievalVar);
-  console.log(storedDataString)
   const storedDataArray = JSON.parse(storedDataString);
   console.log(storedDataArray);
 
   // const arrayFromJson = {data: []};
 
-  if (storedDataArray.length > 0) {
+  if (storedDataArray?.length > 0) {
     submit.style.display = 'block';
 
     let currentArray = [];
+    
     resto.addEventListener('input', async (event) => {
       console.log(event.target.value);
 
