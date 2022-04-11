@@ -63,7 +63,7 @@ function addMapMarkers(map, collection) {
   });
 }
 
-// keep only lab 8 requirements
+/*
 function refreshList(target, storage) {
   target.addEventListener('click', async (event) => {
     event.preventDefault();
@@ -74,7 +74,7 @@ function refreshList(target, storage) {
     localStorage.setItem(storage, JSON.stringify(arrayFromJson.data));
     location.reload();
   });
-}
+} */
 
 // Main function
 async function mainEvent() { // the async keyword means we can make API requests
@@ -90,7 +90,15 @@ async function mainEvent() { // the async keyword means we can make API requests
   const retrievalVar = 'restaurants';
   submit.style.display = 'none';
 
-  refreshList(refresh, retrievalVar);
+  // refreshList(refresh, retrievalVar);
+  
+  if (!localStorage.getItem(retrievalVar)) {
+    // const results = await fetch('/api/foodServicesPG');
+    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const arrayFromJson = await results.json();
+    console.log(arrayFromJson);
+    localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
+  }
 
   const storedDataString = localStorage.getItem(retrievalVar);
   const storedDataArray = JSON.parse(storedDataString);
@@ -118,6 +126,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
       console.log(selectResto);
       createHtmlList(selectResto);
+      addMapMarkers(map, selectResto);
     });
 
     zipcode.addEventListener('input', async (events) => {
@@ -131,6 +140,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
       console.log(selectZip);
       createHtmlList(selectZip);
+      addMapMarkers(map, selectZip);
     });
 
     form.addEventListener('submit', async (submitEvent) => {
