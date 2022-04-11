@@ -50,11 +50,10 @@ function initMap(targetId) {
 function addMapMarkers(map, collection) {
   // remove marker
   map.eachLayer((layer) => {
-    if (layer instanceof L.marker) {
+    if (layer instanceof L.Marker) {
       layer.remove();
     }
   });
-
   // add marker
   collection.forEach((item) => {
     const point = item.geocoded_column_1?.coordinates;
@@ -84,7 +83,7 @@ async function mainEvent() { // the async keyword means we can make API requests
 
   const resto = document.querySelector('#resto_name');
   const zipcode = document.querySelector('#zipcode');
-  const refresh = document.querySelector('#refresh_list');
+  // const refresh = document.querySelector('#refresh_list');
 
   const map = initMap('map');
   const retrievalVar = 'restaurants';
@@ -93,8 +92,7 @@ async function mainEvent() { // the async keyword means we can make API requests
   // refreshList(refresh, retrievalVar);
   
   if (!localStorage.getItem(retrievalVar)) {
-    // const results = await fetch('/api/foodServicesPG');
-    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    const results = await fetch('/api/foodServicesPG');
     const arrayFromJson = await results.json();
     console.log(arrayFromJson);
     localStorage.setItem(retrievalVar, JSON.stringify(arrayFromJson.data));
